@@ -1,8 +1,8 @@
 <template>
-    <form @submit.prevent="onSubmit">
-        <input type="text" placeholder="Nombre del producto" v-model="name" class="nombreP" v-validate="'required'" name="product-name">
+    <form @submit.prevent="onSubmit" class="formProduct__Container">
+        <input type="text" placeholder="Nombre del producto" v-model="name" class="formProduct__InputName" v-validate="'required'" name="product-name">
         <span>{{errors.first('product-name')}}</span>
-        <input type="number" placeholder="Precio del producto" v-model.number ="price" class="precioP" v-validate="'required|min_value:1'" name="product-price">
+        <input type="number" placeholder="Precio del producto" v-model.number ="price" class="formProduct__InputPrice" v-validate="'required|min_value:1'" name="product-price">
         <span>{{errors.first('product-price')}}</span>
         <button type="submit" class="btnP">Agregar producto</button>
     </form>
@@ -34,20 +34,23 @@ export default {
 }
 </script>
 
-<style scoped>
-    form {
+<style lang="less" scoped>
+		@import "../stylesheet/colors";
+		@alturaForm : 100px;
+		
+    .formProduct__Container {
         max-width: 330px;
-        height: 100px;
+        height: @alturaForm;
         margin: auto;
-        background: cornflowerblue;
+        background: @backgorundForm;
         border-radius: 5px;
     }
-    input.nombreP {
+    .formProduct__InputName {
         width: 47.5%;
         margin-right: 2px;
         margin-top: 5%;
     }
-    input.precioP {
+    .formProduct__InputPrice {
         width: 47.5%;
         margin-left: 2px;
     }

@@ -1,20 +1,24 @@
 <template>
   <div id="app">
-    <img class="logo" alt="Vue logo" src="./assets/logo.png">
-    <ShoppingCart/>
+    <Header/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import ShoppingCart from './components/ShoppingCart.vue';
+import Header from './components/Header.vue';
 
 export default {
-  name: 'app',
-  components: {
-    ShoppingCart
-  }
+ name: 'app',
+ components: {
+   Header
+ },
+ created () {
+   this.$store.dispatch('fetchProducts');
+ }
 }
 </script>
+
 
 <style>
 #app {

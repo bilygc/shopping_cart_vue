@@ -1,7 +1,7 @@
 <template>
-    <div v-if="productItem" class="product-item-container">
+    <div v-if="productItem" class="product-item-container" >
 				<div class="product-item-description">
-					<span>{{productItem.name}}</span>
+					<span @click="goToProductDetail(productItem.id)">{{productItem.name}}</span>
 					<span>{{productItem.price | toPrice}}</span>
 				</div>
         <button class="product-item-button" @click="$emit('addToCart', productItem)"> Agregar</button>
@@ -18,6 +18,11 @@ export default {
 		},
 		filters: {
 			toPrice
+		},
+		methods: {
+			goToProductDetail(id) {
+				this.$router.push(`/product/${id}`)
+			}
 		}
 }
 
@@ -58,5 +63,10 @@ export default {
 			display: flex;
 			flex-direction: column;
 			justify-content: left;
+		}
+
+		.product-item-description:hover{
+			text-decoration: underline;
+			cursor: pointer;
 		}
 </style>
